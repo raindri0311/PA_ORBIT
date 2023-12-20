@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Arunika Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+
+  <body>
+    <div class="main">
+      <div class="navbar">
+        <label class="logo">Arunika_<span>Group</span></label>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#produk">Product</a></li>
+          <li><a href="#camera">Camera</a></li>
+          <li><a href="#about-produk">About Product</a></li>
+          <li><a href="#team">About Us</a></li>
+          
+
+        </ul>
+      </div>
+      <section class="hero" id="Home">
+        <div class="content">
+          <h1>Apples <span>Quality Detection</span></h1>
+          <p>
+            "Ever wondered if AI could identify apples? Wonder no more! Try our
+            AI apple detection feature and be amazed by the accuracy."
+          </p>
+        </div>
+      </section>
+
+        <section class="product" id="produk">
+            <body>
+                    <form id="inputForm">
+                        <div class="header">
+                            <div class="header__grid">
+                                <div>
+                                    <label class="header__label" for="model">Model</label>
+                                    <input class="input" type="text" id="model" />
+                                </div>
+                                <div>
+                                    <label class="header__label" for="version">Version</label>
+                                    <input class="input" type="number" id="version" />
+                                </div>
+                                <div>
+                                    <label class="header__label" for="api_key">API Key</label>
+                                    <input class="input" type="text" id="api_key" />
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="content">
+                            <div class="content__grid">
+                                <div class="col-12-s6-m4" id="method">
+                                    <label class="input__label">Upload Method</label>
+                                    <div>
+                                        <button data-value="upload" id="computerButton" class="bttn left fill active">Upload</button>
+                                        <button data-value="url" id="urlButton" class="bttn right fill">URL</button>
+                                    </div>
+                                </div>
+                
+                                <div class="col-12-m8" id="fileSelectionContainer">
+                                    <label class="input__label" for="file">Select File</label>
+                                    <div class="flex">
+                                        <input class="input input--left flex-1" type="text" id="fileName" disabled />							
+                                        <button id="fileMock" class="bttn right active">Browse</button>
+                                    </div>
+                                    <input style="display: none;" type="file" id="file" />
+                                </div>
+                
+                                <div class="col-12-m8" id="urlContainer">
+                                    <label class="input__label" for="file">Enter Image URL</label>
+                                    <div class="flex">
+                                        <input type="text" id="url" placeholder="https://path.to/your.jpg" class="input"/><br>
+                                    </div>
+                                </div>
+                        
+                                <div class="col-12-m6">
+                                    <label class="input__label" for="classes">Filter Classes</label>
+                                    <input type="text" id="classes" placeholder="Enter class names" class="input"/><br>
+                                    <span class="text--small">Separate names with commas</span>
+                                </div>
+                
+                                <div class="col-6-m3 relative">
+                                    <label class="input__label" for="confidence">Min Confidence</label>
+                                    <div>
+                                        <i class="fas fa-crown"></i>
+                                        <span class="icon">%</span>
+                                        <input type="number" id="confidence" value="50" max="100" accuracy="2" min="0" class="input input__icon"/></div>
+                                    </div>
+                                <div class="col-6-m3 relative">
+                                    <label class="input__label" for="overlap">Max Overlap</label>
+                                    <div>
+                                        <i class="fas fa-object-ungroup"></i>
+                                        <span class="icon">%</span>
+                                        <input type="number" id="overlap" value="50" max="100" accuracy="2" min="0" class="input input__icon"/></div>
+                                </div>
+                                <div class="col-6-m3" id="format">
+                                    <label class="input__label">Inference Result</label>
+                                    <div>
+                                        <button id="imageButton" data-value="image" class="bttn left fill active">Image</button>
+                                        <button id="jsonButton" data-value="json" class="bttn right fill">JSON</button>
+                                    </div>
+                                </div>
+                                <div class="col-12 content__grid" id="imageOptions">
+                                    <div class="col-12-s6-m4" id="labels">
+                                        <label class="input__label">Labels</label>
+                                        <div>
+                                            <button class="bttn left active">Off</button>
+                                            <button data-value="on" class="bttn right">On</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12-s6-m4" id="stroke">
+                                        <label class="input__label">Stroke Width</label>
+                                        <div>
+                                            <button data-value="1" class="bttn left active">1px</button>
+                                            <button data-value="2" class="bttn">2px</button>
+                                            <button data-value="5" class="bttn">5px</button>
+                                            <button data-value="10" class="bttn right">10px</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" value="Run Inference" class="bttn__primary">Run Inference</button>
+                                </div>
+                            </div>
+                            <div class="result" id="resultContainer">
+                                <div class="divider"></div>
+                                <div class="result__header">
+                                    <h3 class="headline">Result</h3>
+                                    <a href="#">Copy Code</a>
+                                </div>
+                                <pre id="output" class="codeblock"> here is your json </pre>
+                            </div>
+                        </div>
+                    </form>
+                </body>
+                <!-- partial -->
+                <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+                <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js'></script>
+                <script src='https://cdnjs.cloudflare.com/ajax/libs/async/3.2.0/async.min.js'></script>
+                <script  src="./script.js"></script>
+        
+    
+         </section>
+         
+        <section class="camera" id="camera">
+          <div class="content">
+            <h2>Allow <span> Your Camera</span></h2>
+            <video id="video" autoplay muted playsinline></video>
+            <div id="fps"></div>
+            
+          </div>
+
+        </section>
+        <section class="tentang" id="about-produk">
+             <div class="content">
+                <h2>About<span> Project</span> </h2>
+						
+                <p>Industri pengolahan apel memiliki tantangan dalam mendeteksi kualitas apel secara efisien pada jalur konveyor berkecepatan tinggi. Saat ini, proses pemilahan dan inspeksi kualitas apel masih banyak dilakukan secara manual, yang rentan terhadap kesalahan manusia dan memerlukan banyak tenaga kerja.
+                    Pada 2023 (Agustus – Oktober 2023), industri telah mengalami 100 kejadian kegagalan dimana terdapat buah apel yang gagal dipisahkan atau dipilah berdasarkan kualitas. Setiap kejadian menyebabkan banyak kerugian pada industri.
+                    Proyek "Apple Quality Detection on Fast Conveyor Belt" bertujuan untuk mengembangkan sistem deteksi visual berbasis komputer yang dapat mengidentifikasi apel dengan kualitas yang baik dan yang buruk saat bergerak pada kecepatan tinggi di atas konveyor, Mengintegrasikan sistem deteksi ke dalam proses produksi untuk memungkinkan pengurangan limbah dan peningkatan efisiensi produksi, dan mengurangi biaya tenaga kerja dan kesalahan manusia yang terkait dengan inspeksi manual.
+                    Penggunaan teknologi kecerdasan buatan (AI) dan pengolahan citra untuk mengembangkan sistem otomatisasi yang mampu mendeteksi, mengidentifikasi, dan memisahkan buah berdasarkan kualitasnya dengan tingkat akurasi tinggi pada jalur konveyor yang cepat. Solusi ini akan mencakup penggunaan kamera dan sensor canggih yang terhubung ke sistem komputer untuk analisis citra. Algoritma pembelajaran mesin akan digunakan untuk mengenali ciri-ciri kualitas buah, seperti warna, bentuk, dan kerusakan, sehingga memungkinkan pemisahan otomatis.<p>
+            
+            </div>
+          </section>
+
+          
+
+          <section class="tim" id="team">
+            <div class="container">
+                <div class="text-center">
+                    <h2>Our<span> Team</span> </h2>
+                </div>
+                <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Gallery</title>
+        </head>
+        <body>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                  <img src="images/indriaa.jpg" alt="Foto 1">
+                  <p>Indria Huljanna</p>
+                </div>
+            
+                <div class="gallery-item">
+                  <img src="images/Cici Miranda.JPEG.jpg" alt="Foto 2">
+                  <p>Cici Miranda</p>
+                </div>
+            
+                <div class="gallery-item">
+                  <img src="images/eza.jpg" alt="Foto 3">
+                  <p>Eza Wira Citra</p>
+                </div>
+            
+                <div class="gallery-item">
+                  <img src="images/mikael.jpg" alt="Foto 4">
+                  <p>Mikael Situmorang</p>
+                </div>
+            
+                <div class="gallery-item">
+                  <img src="images/redho.jpg" alt="Foto 5">
+                  <p>Muhammad Redho Syahputra</p>
+                </div>
+            
+                <div class="gallery-item">
+                  <img src="images/siti.jpg" alt="Foto 6">
+                  <p>Siti Rohana Khairunnisa</p>
+                </div>
+              </div>
+            
+        </body>
+        </html>
+        
+        </div>
+        </div>
+      </section>
+
+    </div>
+    </body>
+</html>
+
+
